@@ -6,7 +6,11 @@ import './App.css';
 function App() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const ingredients = [{name: "Gin"},{name: "Elderflower_cordial"}];
+  
+  const ingredients = [{name: "Gin", id: 1},{name: "Elderflower_cordial", id: 2}];
+
+  const [value, setValue] = useState(ingredients[0]);
+  const [inputValue, setInputValue] = useState('');
 
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
   //have a text box then add to end of url
@@ -30,16 +34,25 @@ function App() {
         sx={{width:300, margin: 5, mx: 'auto'}}
         autoHighlight
         options = {ingredients}
-        renderOption={(props, option) => (
-          <Box>{option.name}</Box>
-        )}
+        getOptionLabel={option => (option.name)}
         renderInput={(params) => (
           <TextField 
             {...params}
             label = "Choose an ingredient"
-            inputProps={{...params.inputProps, autocomplete: "new-password",}}
+            inputProps={{...params.inputProps, autoComplete: "new-password",}}
           />
         )}
+        isOptionEqualToValue={(option, value) => option.name===value.name}
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue)
+          console.log(value)
+        }}
+        inputValue={inputValue}
+        onInputChange={(event, newInputValue) => {
+          setInputValue(newInputValue)
+          console.log(inputValue)
+        }}
       />
       {data.map((cocktail => (
         <div key={cocktail.idDrink}>
