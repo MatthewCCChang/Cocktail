@@ -1,6 +1,6 @@
 import {useState, useCallback, useEffect} from 'react';
 import axios from 'axios';
-import { Autocomplete, TextField, Box } from '@mui/material';
+import { Autocomplete, TextField, Button } from '@mui/material';
 import './App.css';
 
 function App() {
@@ -14,19 +14,19 @@ function App() {
 
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
   //have a text box then add to end of url
-  const fetchCocktailHandler = useCallback(() => {
+  const fetchCocktailHandler = useCallback((type) => {
     setLoading(true);
-    axios.get(url+"Elderflower_cordial").then(res=>{
-      console.log(res.data);
-      setData(res.data.drinks);
+    axios.get(url+type).then(res=>{
+    console.log(res.data);
+    setData(res.data.drinks);
     }).catch(e=>console.log(e))
     .finally(() => setLoading(false));
-  }, [])
+}, [])
 
 //.replace() for getting ingredients
 //Autocomplete and Textfield from MUI to get input
   useEffect(() => {
-    fetchCocktailHandler();
+    fetchCocktailHandler("Gin");
   }, [fetchCocktailHandler]);
   return (
     <div className="App">
@@ -46,7 +46,12 @@ function App() {
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue)
-          console.log(value)
+          
+          if(newValue){
+            console.log("not null")
+            fetchCocktailHandler(newValue.name)
+          }
+          
         }}
         inputValue={inputValue}
         onInputChange={(event, newInputValue) => {
