@@ -1,5 +1,6 @@
 # About
-Users are able to filter cocktails by ingredients and view the recipe.
+Users are able to filter cocktails by ingredients.
+![Screenshot]('/public/Screenshot 2024-01-04 141821.png')
 
 # Database 
 This project utilizes CocktailDB as the database for all actions.
