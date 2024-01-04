@@ -1,0 +1,23 @@
+.cocktail-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Optional for vertical centering */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px;
+    background-color: #FFF;
+    width: fit-content; /* Optional for fixed width */
+    border: 1px;
+    box-shadow: 
+    inset 0 -3em 3em rgb(176, 176, 207),
+    10px 5px 5px gray,
+    -1px 0 0.4em gray;
+  }
+
+  h2{
+    color: red;
+  }
+  
+  
