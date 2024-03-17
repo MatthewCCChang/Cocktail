@@ -1,5 +1,6 @@
 # About
-Users are able to filter cocktails by ingredients.
+Users are able to display various cocktails by filtering through the ingredients selection bar.
+
 ![Screenshot](https://raw.githubusercontent.com/MatthewCCChang/Cocktail/main/public/Demo.png)
 
 # Database 
